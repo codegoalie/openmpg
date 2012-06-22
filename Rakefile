@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Mpgfree::Application.load_tasks
+OpenMPG::Application.load_tasks
