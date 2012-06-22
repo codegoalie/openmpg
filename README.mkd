@@ -1,0 +1,5 @@
+= openMPG
+
+OpenMPG is an open-source Rails 3 applciation for tracking and managing MPG for your vehicles.
+
+Head on over to openMPG.org and sign up today!
