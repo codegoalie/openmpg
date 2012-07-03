@@ -1,0 +1,10 @@
+=content_for :title do
+  %h1 #{current_user}'s Vehicles
+
+-if @vehicles.any?
+  = render @vehicles 
+-else 
+  .hero-unit
+    %h1 Garage's empty....
+    %p You don't have any vehicles. Create one on below or on the left.
+    %p= link_to 'Add your first vehicle!', new_vehicle_path, class: 'btn btn-primary btn-large'

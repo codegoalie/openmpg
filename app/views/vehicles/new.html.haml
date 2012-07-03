@@ -1,0 +1,8 @@
+=content_for :title do
+  %h1 
+    New Vehicle
+    %small Congrats on the new purchase. Way to go!
+
+=form_for @vehicle do |f|
+  =f.label :color
+  =f.text_field :color

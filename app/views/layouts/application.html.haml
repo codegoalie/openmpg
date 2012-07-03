@@ -3,7 +3,7 @@
   %head
     %meta(charset="utf-8")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    %title= content_for?(:title) ? yield(:title) : "OpenMPG"
+    %title= content_for?(:title) ? strip_tags(yield(:title)) : "OpenMPG"
     = csrf_meta_tags
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
@@ -22,7 +22,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="#") OpenMPG
+          %a.brand(href="#{root_path}") OpenMPG
           .container.nav-collapse
             %ul.nav
               %li= link_to "Link 1", "/path1"
@@ -43,16 +43,23 @@
 
     .container-fluid
 
-      -if flash[:notice] || flash[:error]
+      -if content_for?(:title) 
         .row-fluid
-          .span4
-          .span4
-            -if flash[:notice]
-              %p.notice.alert= flash[:notice]
-            -if flash[:error]
-              %p.error.alert.alert-error= flash[:error]
+          .span12
+            .page-header
+              =yield(:title)
+
       .row-fluid
-        .span12
+        = render 'sidebar' rescue nil
+        .span10
+          -if flash[:notice] || flash[:error]
+            .row-fluid
+              .span4
+              .span4
+                -if flash[:notice]
+                  %p.notice.alert= flash[:notice]
+                -if flash[:error]
+                  %p.error.alert.alert-error= flash[:error]
           = yield
 
       %footer
