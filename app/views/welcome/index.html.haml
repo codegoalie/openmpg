@@ -8,7 +8,7 @@
           = link_to 'Sign up now', new_user_registration_path, class: 'btn btn-primary btn-large'
   -else
     -if current_user.vehicles.any?
-      = render current_user.vehicles?
+      = render current_user.vehicles
     -else 
       .span12
         .hero-unit

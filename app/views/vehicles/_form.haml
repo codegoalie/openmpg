@@ -1,0 +1,60 @@
+=form_for @vehicle do |f|
+  -if @vehicle.errors.any?
+    #error_message
+      %h5 Oops. A few problems with this vehicle:
+      %ul
+        - @vehicle.errors.full_messages.each do |msg|
+          %li= msg
+
+
+  =f.label :nickname
+  =f.text_field :nickname
+  
+  =f.label :color
+  =f.text_field :color
+  
+  =f.label :year
+  =f.select :year, options_for_select( @year_options, @vehicle.year )
+
+  =f.label :make
+  =f.select :make, options_for_select( @make_options, @vehicle.make )
+  
+  =f.label :model
+  =f.select :model, options_for_select(@model_options, @vehicle.model)
+
+  %br
+  %br
+  =f.submit "Save"
+  =link_to "cancel", vehicles_path
+
+
+=content_for :javascript do
+  :javascript
+    $(function() {
+      $('select#vehicle_year').change(function() {
+        var new_year = $(this).val();
+        update_year(new_year);
+      }); 
+
+      $('select#vehicle_make').change(function() {
+        var new_make = $(this).val();
+        var new_year = $("select#vehicle_year").val();
+        update_model(new_make, new_year);
+      }); 
+    });
+
+    function update_year(new_year){
+      $("select#vehicle_make").hide().after("<img id='make_loader' src='/assets/loader.gif' />");
+      $.get("#{makes_vehicles_path}.js?year=" + new_year, function() {
+        var new_make = $("select#vehicle_make").val();
+        update_model(new_make, new_year);
+      }, 'script');
+    }
+
+    function update_model(new_make, new_year) {
+      $("select#vehicle_model").hide().after("<img id='model_loader' src='/assets/loader.gif' />");
+      $.get("#{models_vehicles_path}.js?make=" + new_make + "&year=" + new_year, 'script');
+    }
+
+
+  

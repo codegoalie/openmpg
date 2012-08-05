@@ -7,7 +7,12 @@ OpenMPG::Application.routes.draw do
     post 'signin' => 'devise/sessions#create', :as => :user_session
     delete 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
   end
-  resources :vehicles
+  resources :vehicles do
+    collection do
+      get 'makes'
+      get 'models'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
