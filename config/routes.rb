@@ -12,6 +12,10 @@ OpenMPG::Application.routes.draw do
       get 'makes'
       get 'models'
     end
+
+    member do
+      resources :fillups
+    end
   end
 
   # The priority is based upon order of creation:

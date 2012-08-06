@@ -26,5 +26,10 @@ class Ability
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
     can :manage, Vehicle, :user_id => user.id
+
+    can :create, Fillup
+    can :manage, Fillup do |fillup|
+      user.vehicles.include?(fillup.vehicle)
+    end
   end
 end
