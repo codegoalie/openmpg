@@ -10,4 +10,8 @@ class Vehicle < ActiveRecord::Base
   def to_s
     nickname
   end
+
+  def current_mileage
+    fillups.last.mileage if fillups.any?
+  end
 end

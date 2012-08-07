@@ -1,0 +1,9 @@
+%table
+  %thead
+    %tr
+      %th= Fillup.human_attribute_name :filed_at
+      %th Mileage
+      %th Gallons
+      %th= Fillup.human_attribute_name :ppg
+  %tbody
+    = render fillups

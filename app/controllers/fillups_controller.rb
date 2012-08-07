@@ -5,4 +5,13 @@ class FillupsController < ApplicationController
     @vehicle = Vehicle.find(params[:id])
     @fillup = @vehicle.fillups.new
   end
+
+  def create
+    @vehicle = Vehicle.find(params[:id])
+    if @fillup = @vehicle.fillups.create(params[:fillup])
+      redirect_to @vehicle
+    else
+      render :new
+    end
+  end
 end

@@ -4,5 +4,5 @@
     %small #{@vehicle.year} #{@vehicle.color} #{@vehicle.make} #{@vehicle.model}
 
 = link_to "New Fillup", new_fillup_path(@vehicle)
-= render @vehicle.fillups
+=render partial: 'fillups/fillups_table', locals: { fillups: @vehicle.fillups }
 
