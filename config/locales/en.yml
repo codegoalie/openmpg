@@ -13,3 +13,4 @@ en:
     attributes:
       fillup:
         ppg: 'Price Per Gallon'
+        mpg: 'MPG'

@@ -5,25 +5,28 @@ describe Fillup do
     before(:each) do
       @vehicle = Vehicle.make!
       @first =  Fillup.make!(filled_at: Time.now - 5.minutes, mileage: 100, gallons: 10)
-      @last =  Fillup.make!(filled_at: Time.now, mileage: 150, gallons: 11)
-      @vehicle.fillups << @first << @last
+      @second =  Fillup.make!(filled_at: Time.now - 3.minutes, mileage: 120, gallons: 11)
+      @last =  Fillup.make!(filled_at: Time.now, mileage: 150, gallons: 15)
+      @vehicle.fillups << @first << @second << @last
+    end
+
+    it 'should calculate its own mpg on save when gallons are changed' do
       @new_gallons = 15
-      @new_milgeage = 200
+      @second.update_attribute(:gallons, @new_gallons)
+      @second.mpg.should== ((@second.mileage - @first.mileage)/@second.gallons).round(2)
     end
 
-    it 'should calculate the previous fillups mpg on save when gallons are changed' do
-      @last.update_attribute(:gallons, @new_gallons)
-      @last.mpg.should== (@last.mileage - @first.mileage)/@new_gallons
-    end
-
-    it 'should calculate the previous fillups mpg on save when mileage is changed' do
-      @last.update_attribute(:mileage, @new_milege)
-      @last.mpg.should== (@new_mileage - @first.mileage)/@last.gallons
+    it 'should calculate the next fillups mpg on save when mileage is changed' do
+      @new_mileage = 130
+      @second.update_attribute(:mileage, @new_mileage)
+      @last.reload
+      @last.mpg.should== ((@last.mileage - @second.mileage)/@last.gallons).round(2)
     end
 
     it 'should calculate the its own mpg on save when mileage is changed' do
-      @first.update_attribute(:mileage, @new_milege)
-      @first.mpg.should== (@last.mileage - @new_mileage)/@last.gallons
+      @new_mileage = 130
+      @second.update_attribute(:mileage, @new_mileage)
+      @second.mpg.should== ((@second.mileage - @first.mileage)/@second.gallons).round(2)
     end
   end
 end

@@ -14,4 +14,21 @@ class FillupsController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @fillup = Fillup.find(params[:id])
+    @vehicle = @fillup.vehicle
+  end
+
+  def update
+    @fillup = Fillup.find(params[:id])
+    @vehicle = @fillup.vehicle
+
+    if @fillup.update_attributes(params[:fillup])
+      flash[:success] = "Fillup updated."
+      redirect_to @vehicle
+    else
+      render 'edit'
+    end
+  end
 end

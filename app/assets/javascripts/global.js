@@ -5,4 +5,11 @@ $(function() {
     if(new_val)
       $(this).val(new_val);
   });
+
+  $(".acts-like-link").live('click', function() {
+    var path = $(this).data('href');
+    if(path != "") {
+      window.location = path;
+    }
+  });
 });
