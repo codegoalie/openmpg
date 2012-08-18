@@ -3,3 +3,14 @@
 
 en:
   hello: "Hello world"
+  time:
+    formats:
+      default: '%-m/%-I/%Y %l:%M %P'
+  date:
+    formats:
+      default: '%-m/%-I/%Y %l:%M %P'
+  activerecord:
+    attributes:
+      fillup:
+        ppg: 'Price Per Gallon'
+        mpg: 'MPG'

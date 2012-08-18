@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703013305) do
+ActiveRecord::Schema.define(:version => 20120805222852) do
+
+  create_table "fillups", :force => true do |t|
+    t.integer  "mileage"
+    t.integer  "vehicle_id"
+    t.float    "gallons"
+    t.float    "ppg"
+    t.float    "mpg"
+    t.datetime "filled_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

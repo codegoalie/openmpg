@@ -30,6 +30,7 @@ end
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'machinist'
 end
 
 group :development do

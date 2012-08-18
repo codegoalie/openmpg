@@ -52,6 +52,7 @@
 
       .row-fluid
         = render 'sidebar' rescue nil
+        %div.visible-phone.phone-sidebar-divider.clear-both
         .span10
           -if flash[:notice] || flash[:error]
             .row-fluid

@@ -1,0 +1,27 @@
+=form_for @fillup do |f|
+  -if @fillup.errors.any?
+    #error_message
+      %h5 Oops. A few problems with this fillup:
+      %ul
+        - @fillup.errors.full_messages.each do |msg|
+          %li= msg
+
+
+  =f.label :filled_at
+  =f.text_field :filled_at, value: l(@fillup.filled_at || Time.now), class: 'datejs'
+
+  =f.label :mileage
+  =f.number_field :mileage, value: @fillup.mileage || @vehicle.current_mileage
+
+  =f.label :gallons
+  =f.number_field :gallons
+
+  =f.label :ppg
+  =f.number_field :ppg, step: 'any'
+
+
+
+  %br
+  %br
+  =f.submit "Save"
+  =link_to "cancel", @vehicle

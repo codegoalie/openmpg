@@ -1,2 +1,5 @@
 .vehicle
-  = vehicle.nickname
+  -if can? :mangage, vehicle
+    = link_to vehicle, vehicle
+  -else
+    = vehicle
