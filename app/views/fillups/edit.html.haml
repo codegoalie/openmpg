@@ -1,1 +1,6 @@
+=content_for :title do
+  %h1 
+    Fillup for #{@fillup.vehicle}
+    %small from #{l @fillup.filled_at}
+
 =render 'form'

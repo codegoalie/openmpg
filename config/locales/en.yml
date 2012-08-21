@@ -5,10 +5,10 @@ en:
   hello: "Hello world"
   time:
     formats:
-      default: '%-m/%-I/%Y %l:%M %P'
+      default: '%-m/%d/%y %l:%M %P'
   date:
     formats:
-      default: '%-m/%-I/%Y %l:%M %P'
+      default: '%-m/%d/%y %l:%M %P'
   activerecord:
     attributes:
       fillup:

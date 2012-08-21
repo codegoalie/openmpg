@@ -14,7 +14,7 @@
   =f.number_field :mileage, value: @fillup.mileage || @vehicle.current_mileage
 
   =f.label :gallons
-  =f.number_field :gallons
+  =f.number_field :gallons, step: 'any'
 
   =f.label :ppg
   =f.number_field :ppg, step: 'any'

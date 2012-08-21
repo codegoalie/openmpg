@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   has_many :vehicles
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me,
+    :time_zone
   # attr_accessible :title, :body
 
   def to_s

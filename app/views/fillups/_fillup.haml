@@ -1,5 +1,5 @@
 %tr.acts-like-link{ data: { href: edit_fillup_path(fillup) }}
-  %td= l fillup.filled_at
+  %td{ title: l(fillup.filled_at.in_time_zone) } #{time_ago_in_words(fillup.filled_at.in_time_zone)} ago
   %td= fillup.mileage
   %td= fillup.gallons
   %td= fillup.ppg

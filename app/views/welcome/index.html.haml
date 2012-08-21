@@ -1,17 +1,21 @@
+=content_for :title do
+  %h1 Welcome to OpenMPG! 
+
 .row-fluid
-  -unless user_signed_in?
+  -if user_signed_in?
+    .span12
+      -if current_user.vehicles.any?
+        %h2 All Vehicles:
+        = render Vehicle.all
+      -else 
+        .hero-unit
+          %h1 Welcome, #{current_user}!!
+          %p We're happy to see you. Get started now by adding your first vehicle.
+          %p= link_to "Manage vehicles", vehicles_path, class: 'btn btn-primary btn-large'
+  -else
     .span5
       .hero-unit
         %h1 Welcome!
         %p Start saving money on gas today!
         %p
           = link_to 'Sign up now', new_user_registration_path, class: 'btn btn-primary btn-large'
-  -else
-    -if current_user.vehicles.any?
-      = render Vehicle.all
-    -else 
-      .span12
-        .hero-unit
-          %h1 Welcome, #{current_user}!!
-          %p We're happy to see you. Get started now by adding your first vehicle.
-          %p= link_to "Manage vehicles", vehicles_path, class: 'btn btn-primary btn-large'

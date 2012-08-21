@@ -1,0 +1,20 @@
+=form_for @user do |f|
+  -if @user.errors.any?
+    #error_message
+      %h5 Oh snap. We've got some beef with your settings:
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+
+
+  =f.label :email
+  =f.text_field :email
+  
+  =f.label :time_zone
+  =f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, {default: (@user.time_zone || Time.zone.name)}
+  
+  %br
+  %br
+  =f.submit "Save"
+  =link_to "cancel", root_path
+

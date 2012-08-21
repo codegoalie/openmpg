@@ -1,5 +1,6 @@
 class FillupsController < ApplicationController
   load_and_authorize_resource
+  before_filter :parse_time, only: [:create, :update]
 
   def new
     @vehicle = Vehicle.find(params[:id])
@@ -29,6 +30,14 @@ class FillupsController < ApplicationController
       redirect_to @vehicle
     else
       render 'edit'
+    end
+  end
+
+  def parse_time
+    if params[:fillup][:filled_at].present?
+      raw_time = DateTime.strptime(params[:fillup][:filled_at], '%m/%d/%y %l:%M %P')
+      params[:fillup][:filled_at] = Time.new(raw_time.year, raw_time.month, raw_time.day, raw_time.hour, raw_time.minute, raw_time.second)
+
     end
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120805222852) do
+ActiveRecord::Schema.define(:version => 20120821030020) do
 
   create_table "fillups", :force => true do |t|
     t.integer  "mileage"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20120805222852) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "time_zone"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
