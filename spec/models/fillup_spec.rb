@@ -29,4 +29,23 @@ describe Fillup do
       @second.mpg.should== ((@second.mileage - @first.mileage)/@second.gallons).round(2)
     end
   end
+
+  describe 'per_hundred' do
+    it 'should be nil without an mpg' do
+      @fillup = Fillup.make!(mpg: nil)
+      @fillup.per_hundred.should be_nil
+    end
+
+    it 'should be nil without price per gallon' do
+      @fillup = Fillup.make!(ppg: nil)
+      @fillup.per_hundred.should be_nil
+    end
+
+    it 'should return with an mpg and ppg' do
+      @mpg = 10
+      @ppg = 10
+      @fillup = Fillup.make!(mpg: @mpg, ppg: @ppg)
+      @fillup.per_hundred.should== (100 / @mpg) * @ppg
+    end
+  end
 end

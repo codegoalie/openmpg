@@ -24,4 +24,8 @@ class Fillup < ActiveRecord::Base
       self.mpg = ((mileage - previous_one.mileage) / gallons).round(2)
     end
   end
+
+  def per_hundred
+    (100 / mpg) * ppg  if mpg && ppg
+  end
 end
