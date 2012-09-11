@@ -25,3 +25,7 @@
   %br
   =f.submit "Save"
   =link_to "cancel", @vehicle
+  %br
+  %br
+  -unless @fillup.new_record?
+    =link_to 'Delete fillup', destroy_fillup_path(@fillup), :confirm => "Once you do this, there's no goin' back."
