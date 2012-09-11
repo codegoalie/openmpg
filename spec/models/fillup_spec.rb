@@ -26,7 +26,8 @@ describe Fillup do
     it 'should calculate the its own mpg on save when mileage is changed' do
       @new_mileage = 130
       @second.update_attribute(:mileage, @new_mileage)
-      @second.mpg.should== ((@second.mileage - @first.mileage)/@second.gallons).round(2)
+      @second.reload
+      @second.mpg.should== ((@second.mileage.to_f - @first.mileage)/@second.gallons).round(2)
     end
   end
 
