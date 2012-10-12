@@ -27,7 +27,11 @@ test:
   password: roadwarrior
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: openmpg_dev
   pool: 5
   timeout: 5000
+  username: openmpg
+  password: roadwarrior
