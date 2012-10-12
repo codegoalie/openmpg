@@ -6,6 +6,10 @@ class VehiclesController < ApplicationController
   def index
   end
 
+  def show
+    @max_mpg = @vehicle.fillups.maximum(:mpg)
+  end
+
   def new
   end
 

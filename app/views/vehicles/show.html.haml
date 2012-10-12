@@ -3,12 +3,27 @@
     = @vehicle
     %small #{@vehicle.year} #{@vehicle.color} #{@vehicle.make} #{@vehicle.model}
 
-.span10
-  -if @vehicle.fillups.any?
-    = link_to "New Fillup", new_fillup_path(@vehicle)
-    =render partial: 'fillups/fillups_table', locals: { fillups: @vehicle.fillups }
-  -else
-    .well
-      %h3 You have not filled up yet.
-      =link_to 'Recored a new fill up now', new_fillup_path(@vehicle)
+-if @vehicle.fillups.any?
+  .row
+    .span4
+      %h3 Vehicle Summary
+      .stats
+        %dl
+          %dt Best MPG
+          %dd= @max_mpg
+      .stats
+        %dl
+          %dt Longest Tank
+          %dd= @max_mpg
+
+  .row
+    .span10
+      = link_to "New Fillup", new_fillup_path(@vehicle)
+      =render partial: 'fillups/fillups_table', locals: { fillups: @vehicle.fillups }
+-else
+  .row
+    .span3
+      .well
+        %h3 You have not filled up yet.
+        =link_to 'Recored a new fill up now', new_fillup_path(@vehicle)
 
