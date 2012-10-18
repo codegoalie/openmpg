@@ -31,6 +31,7 @@ end
 group :test, :development do
   gem 'rspec-rails'
   gem 'machinist'
+  gem 'sqlite3'
 end
 
 group :development do
