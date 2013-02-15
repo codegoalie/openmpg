@@ -43,8 +43,10 @@
                 %li= link_to 'Sign In', new_user_session_path
 
     .container-fluid
+      %br
+      %br
 
-      -if content_for?(:title) 
+      -if content_for?(:title)
         .row-fluid
           .span12
             .page-header

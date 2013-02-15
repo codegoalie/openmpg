@@ -8,6 +8,8 @@ gem 'rails', '~> 3.2.0'
 gem 'pg'
 gem 'car_query'
 
+gem 'therubyracer'
+gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'haml-rails'
 gem 'jquery-rails'
